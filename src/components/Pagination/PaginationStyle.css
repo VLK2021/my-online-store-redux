@@ -40,7 +40,7 @@
             inset 0 0 15px rgba(0, 0, 0, .2);
 }
 
-.pagination-pages > .active-page {
+.pagination-pages.active-page {
     background: var(--var-bg-btn-blockStar-h1);
     color: var(--var-color-textInBlock-star-textActive);
 }
@@ -50,4 +50,5 @@
     color: var(--var-color-textInBlock-star-textActive);
     background: var(--var-bg-btn-blockStar-h1);
 }
+
 

@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-
-import './PaginationStyle.css';
-import {getAllProducts} from "../../store/slices/products.slice";
 import {useDispatch} from "react-redux";
+
+import {getAllProducts} from "../../store/slices/products.slice";
+import './PaginationStyle.css';
 
 const Pagination = ({totalProductsPage, currentPage, pageChange}) => {
 
@@ -15,19 +15,19 @@ const Pagination = ({totalProductsPage, currentPage, pageChange}) => {
     const pages = [];
 
 
-    const onAddNextPages = () => {
-        if (endPage + 12 <= totalProductsPage) {
-            setStartPage(startPage + 12);
-            setEndPage(endPage + 12);
-        }
-    };
+    // const onAddNextPages = () => {
+    //     if (endPage + 12 <= totalProductsPage) {
+    //         setStartPage(startPage + 12);
+    //         setEndPage(endPage + 12);
+    //     }
+    // };
 
-    const onRemovePages = () => {
-        if (endPage - 12 > 0) {
-            setStartPage(startPage - 12);
-            setEndPage(endPage - 12);
-        }
-    };
+    // const onRemovePages = () => {
+    //     if (endPage - 12 > 0) {
+    //         setStartPage(startPage - 12);
+    //         setEndPage(endPage - 12);
+    //     }
+    // };
 
 
     for (let i = startPage; i <= endPage; i++) {
@@ -45,7 +45,7 @@ const Pagination = ({totalProductsPage, currentPage, pageChange}) => {
 
     return (
         <div className={'pagination'}>
-            <button onClick={onRemovePages} className="pagination-btn">Prev</button>
+            {/*<button onClick={onRemovePages} className="pagination-btn">Prev</button>*/}
 
             {
                 // pages.map(item => <div key={item}
@@ -62,7 +62,7 @@ const Pagination = ({totalProductsPage, currentPage, pageChange}) => {
                                        }}>{item}</div>)
             }
 
-            <button onClick={onAddNextPages} className="pagination-btn">Next</button>
+            {/*<button onClick={onAddNextPages} className="pagination-btn">Next</button>*/}
         </div>
     );
 };
