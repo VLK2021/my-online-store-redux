@@ -1,0 +1,19 @@
+.layout {
+    width: 100%;
+    background: var(--var-bg-color);
+    padding: 0 5rem 0 5rem;
+}
+
+.layout-main {
+    display: flex;
+}
+
+.layout-sidebar {
+    width: 25%;
+    background: #7E72F2;
+}
+
+.layout-outlet {
+    width: 75%;
+    /*background: deepskyblue;*/
+}
