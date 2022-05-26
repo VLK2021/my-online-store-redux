@@ -1,5 +1,5 @@
 export const urls = {
     products: (page) =>`/products?_limit=9&_page=${page}`,
-    categories: '/categories',
-    brands: '/brands'
+    categories: (page) => `/categories?_limit=9&_page=${page}`,
+    brands: (page) => `/brands?_limit=9&_page=${page}`,
 }

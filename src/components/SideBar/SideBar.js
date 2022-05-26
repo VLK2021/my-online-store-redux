@@ -7,6 +7,9 @@ const SideBar = () => {
     return (
         <div className={'sideBar'}>
 
+            {/*<Categorys/>*/}
+
+
         </div>
     );
 };
