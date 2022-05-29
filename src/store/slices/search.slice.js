@@ -8,7 +8,6 @@ export const getSearchProducts = createAsyncThunk(
     async ({word, page}, {rejectWithValue}) => {
         try {
             const searchA = await productsService.getAllSearch(word, page)
-            console.log(searchA);
             return searchA
         } catch (e) {
             return rejectWithValue(e.message)
