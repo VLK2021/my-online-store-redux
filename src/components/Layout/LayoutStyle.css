@@ -1,7 +1,7 @@
 .layout {
     width: 100%;
     background: var(--var-bg-color);
-    padding: 0 5rem 0 5rem;
+    padding: 0 3rem 0 3rem;
 }
 
 .layout-main {
@@ -10,7 +10,6 @@
 
 .layout-sidebar {
     width: 25%;
-    background: #7E72F2;
 }
 
 .layout-outlet {

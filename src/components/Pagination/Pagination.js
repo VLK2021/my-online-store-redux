@@ -30,6 +30,7 @@ const Pagination = ({totalProductsPage, currentPage, pageChange}) => {
     // };
 
 
+
     for (let i = startPage; i <= endPage; i++) {
         pages.push(i);
     }
@@ -47,21 +48,14 @@ const Pagination = ({totalProductsPage, currentPage, pageChange}) => {
         <div className={'pagination'}>
             {/*<button onClick={onRemovePages} className="pagination-btn">Prev</button>*/}
 
+
             {
-                // pages.map(item => <div key={item}
-                // className={`pagination-pages ${currentPage === item && 'active-page'}`}
-                //                        onClick={() => {
-                //                        onPageChange(item)
-                //                        }}> {item}</div>)
-
-
                 pages.map(item => <div key={item}
                                        className={`pagination-pages ${currentPage === item && 'active-page'}`}
                                        onClick={() => {
                                            onPageChange(item);
                                        }}>{item}</div>)
             }
-
             {/*<button onClick={onAddNextPages} className="pagination-btn">Next</button>*/}
         </div>
     );

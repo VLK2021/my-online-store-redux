@@ -1,11 +1,11 @@
 import React from 'react';
 
 import Header from "../Header/Header";
-import SideBar from "../SideBar/SideBar";
 import './LayoutStyle.css';
 import {Outlet} from "react-router-dom";
 import Search from "../Search/Search";
-import Categories from "../Categories/Categories";
+import Form from "../Form/Form";
+
 
 
 const Layout = () => {
@@ -14,9 +14,8 @@ const Layout = () => {
             <Header/>
 
             <div className={'layout-main'}>
-                {/*<div className={'layout-sidebar'}><SideBar/></div>*/}
                 <div className={'layout-sidebar'}>
-                    <Categories/>
+                   <Form/>
                 </div>
 
                 <div className={'layout-outlet'}>
