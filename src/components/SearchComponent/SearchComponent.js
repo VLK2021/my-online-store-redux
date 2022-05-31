@@ -5,6 +5,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import './SearchComponentStyle.css';
 
 
+
 const SearchComponent = () => {
 
     const {searchArr} = useSelector(store => store.search);

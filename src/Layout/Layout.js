@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Header from "../Header/Header";
 import './LayoutStyle.css';
+import Header from "../components/Header/Header";
 import {Outlet} from "react-router-dom";
-import Search from "../Search/Search";
-import Form from "../Form/Form";
+import Search from "../components/Search/Search";
+import Form from "../components/Form/Form";
 
 
 

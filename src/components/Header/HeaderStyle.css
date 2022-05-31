@@ -28,5 +28,24 @@
     width: 0.8rem;
 }
 
+#popUp {
+    min-width: 40rem;
+    min-height: 20rem;
+    display: none;
+    background: var(--var-color-textInBlock-star-textActive);
+    box-shadow: 0.1rem 0.1rem 0.1rem 0.2rem gray;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -20rem;
+    margin-top: -10rem;
+}
+
+.close {
+    width: 1rem;
+    height: 1rem;
+    background: black;
+}
+
 
 

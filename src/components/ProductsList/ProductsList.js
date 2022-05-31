@@ -12,6 +12,7 @@ const ProductsList = () => {
     const {error, productsArr, currentPage, totalProductsPage} = useSelector(store => store.products);
     const dispatch = useDispatch();
 
+
     const page = 1;
 
 

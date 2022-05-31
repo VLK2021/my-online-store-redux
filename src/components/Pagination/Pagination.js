@@ -4,7 +4,9 @@ import {useDispatch} from "react-redux";
 import {getAllProducts} from "../../store/slices/products.slice";
 import './PaginationStyle.css';
 
+
 const Pagination = ({totalProductsPage, currentPage, pageChange}) => {
+
 
     const dispatch = useDispatch();
 
@@ -41,7 +43,6 @@ const Pagination = ({totalProductsPage, currentPage, pageChange}) => {
             dispatch(pageChange(page));
         }
     };
-
 
 
     return (

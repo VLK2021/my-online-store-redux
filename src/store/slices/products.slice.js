@@ -42,7 +42,7 @@ const productsSlice = createSlice({
             state.status = 'fulfilled'
             state.productsArr = action.payload
             state.currentPage = action.payload
-            state.totalMoviesPage = action.payload.totalProductsPage
+            state.totalMoviesPage = action.payload
         },
 
         [getAllProducts.rejected]: (state, action) => {
