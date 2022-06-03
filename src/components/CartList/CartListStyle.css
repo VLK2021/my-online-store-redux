@@ -1,0 +1,14 @@
+.cartList {
+    position: absolute;
+    top: 30px;
+    left: -300px;
+    width: 500px;
+    border: 1px solid #7E72F2;
+    border-radius: 0.2rem;
+    z-index: 2;
+    background: var(--var-bg-color);
+}
+
+.cartList-products {
+    width: 100%;
+}

@@ -1,0 +1,17 @@
+.cartBlock{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.cartBlock-bitCartAlt{
+    position: relative;
+    cursor: pointer;
+    margin-right: 0.3rem;
+    font-size: 0.3rem;
+ }
+
+.cartBlock-totalPrice {
+    font-weight: bold;
+}

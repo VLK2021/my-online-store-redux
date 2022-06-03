@@ -1,39 +1,18 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
-import cartImg from '../../images/cartImg.png';
+import CartBlock from "../CartBlock/CartBlock";
 import './HeaderStyle.css';
 
 const Header = () => {
 
-    const showCart = () => {
-        const popUp = document.getElementById('popUp');
-        if (popUp.style.display === 'block') {
-            popUp.style.display = 'none';
-        } else {
-            popUp.style.display = 'block';
-        }
-    }
-
-    const closePopUp = () => {
-        const popUp = document.getElementById('popUp');
-        popUp.style.display = 'none';
-    }
-
     return (
         <div className={'header'}>
-            <p>Online store</p>
+            <Link to={'/'} className={'header-text'}>Online store</Link>
 
-            <button onClick={() => showCart()}>
-                <img src={cartImg} alt="foto"/>
-                CART
-            </button>
-
-            <div id={'popUp'}>
-                <div className={'close'} onClick={() => closePopUp()}>
-
-                </div>
+            <div className={'header-cartBtn'}>
+                <CartBlock/>
             </div>
-
         </div>
     );
 };

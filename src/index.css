@@ -11,3 +11,8 @@
   --var-color-text-h3-h6: #2C2C2C;
   --var-color-textInBlock-star-textActive: #FFFFFF;
 }
+
+a{
+  text-decoration: none;
+  color: var(--var-bg-btn-blockStar-h1);
+}

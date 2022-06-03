@@ -27,7 +27,6 @@ const Search = () => {
             <form onSubmit={handleSubmit(submit)}>
                 <input className={'search-input'} {...register('search')} type="text" placeholder={'Search...'}/>
             </form>
-
         </div>
     );
 };

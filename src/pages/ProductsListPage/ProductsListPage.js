@@ -2,16 +2,15 @@ import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect} from 'react';
 
 import {getAllProducts} from "../../store/slices/products.slice";
-import ProductCard from "../ProductCard/ProductCard";
-import Pagination from "../Pagination/Pagination";
-import './ProductrsStyle.css';
+import ProductCard from "../../components/ProductCard/ProductCard";
+import Pagination from "../../components/Pagination/Pagination";
+import './ProductsListPageStyle.css';
 
 
-const ProductsList = () => {
+const ProductsListPage = () => {
 
     const {error, productsArr, currentPage, totalProductsPage} = useSelector(store => store.products);
     const dispatch = useDispatch();
-
 
     const page = 1;
 
@@ -35,4 +34,4 @@ const ProductsList = () => {
     );
 };
 
-export default ProductsList;
+export default ProductsListPage;
