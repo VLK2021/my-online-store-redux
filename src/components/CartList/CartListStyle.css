@@ -1,8 +1,8 @@
 .cartList {
     position: fixed;
     top: 6rem;
-    left: 10rem;
-    width: 80%;
+    left: 5rem;
+    width: 90%;
     padding: 0.5rem;
     border-radius: 0.2rem;
     z-index: 2;

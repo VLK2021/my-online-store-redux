@@ -20,3 +20,8 @@
 .cartBlock-totalPrice {
     font-weight: bold;
 }
+
+.cartBlock-text{
+    text-transform: uppercase;
+    font-weight: bold;
+}

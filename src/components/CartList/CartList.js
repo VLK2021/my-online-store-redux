@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './CartListStyle.css';
+import ProductCardInCart from "../ProductCardInCart/ProductCardInCart";
 
 
 const CartList = ({cartArr, onClick, totalPrice}) => {
@@ -10,11 +11,11 @@ const CartList = ({cartArr, onClick, totalPrice}) => {
         <div className={'cartList'}>
 
             <div className={'cartList-products'}>
+
                 {
-                    cartArr.length > 0 ? cartArr.map(prod => <div key={prod.id}>{prod.brand}
-                    <button onClick={()=>null}>del</button>
-                    </div>) : 'кошик порожній!'
+                    cartArr.length > 0 ? cartArr.map(prod => <ProductCardInCart key={prod.id} prod={prod}/>) : 'кошик порожній!'
                 }
+
             </div>
             <hr/>
 
