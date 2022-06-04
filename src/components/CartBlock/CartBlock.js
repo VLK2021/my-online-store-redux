@@ -1,13 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {BiCartAlt} from 'react-icons/bi'
 import {useSelector} from "react-redux";
 
-import './CartBlockStyle.css';
 import CartList from "../CartList/CartList";
+import CartCircle from "../CartCircle/CartCircle";
+import './CartBlockStyle.css';
 
 
 const CartBlock = () => {
-
+    const [cartListVisible, setCartListVisible] = useState(false);
     const {cartArr} = useSelector(store => store.cart);
 
     const totalPrice = cartArr.reduce((acc, product) => acc += product.price, 0);
@@ -15,12 +16,24 @@ const CartBlock = () => {
 
     return (
         <div className={'cartBlock'}>
-            <BiCartAlt size={23} className={'cartBlock-bitCartAlt'}/>
+            <CartCircle length={cartArr.length}/>
 
-            <div className={'cartBlock-totalPrice'}>{totalPrice} ua</div>
+            <BiCartAlt
+                size={30}
+                className={'cartBlock-bitCartAlt'}
+                onClick={() => setCartListVisible(!cartListVisible)}
+            />
 
-            <CartList cartArr={cartArr} onClick={()=>null} totalPrice={totalPrice}/>
+            <p>cart</p>
+
+            {totalPrice > 0 ? (
+                <div className={'cartBlock-totalPrice'}>{totalPrice} ua</div>
+            ) : null}
+
+            {cartListVisible && <CartList cartArr={cartArr} onClick={() => null} totalPrice={totalPrice}/>}
+
         </div>
+
     );
 };
 

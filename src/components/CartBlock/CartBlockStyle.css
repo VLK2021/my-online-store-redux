@@ -1,4 +1,9 @@
 .cartBlock{
+    width: 10rem;
+    background: var(--var-bg-btn-blockStar-h1);
+    color: var(--var-bg-color);
+    padding: 1rem;
+    border-radius: 0.3rem;
     display: flex;
     justify-content: center;
     align-items: center;

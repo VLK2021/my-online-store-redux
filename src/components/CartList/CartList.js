@@ -11,11 +11,14 @@ const CartList = ({cartArr, onClick, totalPrice}) => {
 
             <div className={'cartList-products'}>
                 {
-                    cartArr.length > 0 ? cartArr.map(prod => prod.brand) : 'кошик порожній!'
+                    cartArr.length > 0 ? cartArr.map(prod => <div key={prod.id}>{prod.brand}
+                    <button onClick={()=>null}>del</button>
+                    </div>) : 'кошик порожній!'
                 }
             </div>
             <hr/>
-            {
+
+            <div className={'cartList-mainOrder'}>{
                 cartArr.length > 0 ?
                     <div className={'cartList-order'}>
                         <div className={'cartList-order-totalPrice'}>
@@ -23,13 +26,12 @@ const CartList = ({cartArr, onClick, totalPrice}) => {
                             <div>{totalPrice}</div>
                         </div>
 
-                        <button>
+                        <button onClick={onClick}>
                             оформити замовлення
                         </button>
-
                     </div>
                     : null
-            }
+            }</div>
 
         </div>
     );
