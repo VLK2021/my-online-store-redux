@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect} from 'react';
 
-import {getAllProducts} from "../../store/slices/products.slice";
+import {getAllProducts} from "../../store";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Pagination from "../../components/Pagination/Pagination";
 import './ProductsListPageStyle.css';

@@ -20,7 +20,7 @@ const initialState = {
     status: null,
     error: null,
     currentPage: 1,
-    totalProductsPage: 0,
+    totalProductsPage: 12,
 }
 
 const searchSlice = createSlice({
