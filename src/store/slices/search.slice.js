@@ -39,8 +39,8 @@ const searchSlice = createSlice({
         [getSearchProducts.fulfilled]: (state, action) => {
             state.ststus = 'fulfilled'
             state.searchArr = action.payload
-            state.currentPage = action.payload
-            state.totalProductsPage = action.payload
+            state.currentPage = action.payload.page
+            state.totalProductsPage = action.payload.totalProductsPage
         },
 
         [getSearchProducts.rejected]: (state, action) => {

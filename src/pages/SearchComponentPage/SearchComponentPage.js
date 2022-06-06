@@ -2,9 +2,9 @@ import React from 'react';
 import {useSelector} from "react-redux";
 
 import ProductCard from "../../components/ProductCard/ProductCard";
-import './SearchComponentPageStyle.css';
-import {getAllProducts} from "../../store/slices/products.slice";
+import {getAllProducts} from "../../store";
 import Pagination from "../../components/Pagination/Pagination";
+import './SearchComponentPageStyle.css';
 
 
 
@@ -17,7 +17,7 @@ const SearchComponentPage = () => {
             {
                 searchArr && searchArr.map(prod => <ProductCard key={prod.id} product={prod}/>)
             }
-            <Pagination totalProductsPage={totalProductsPage} currentPage={currentPage} pageChange={getAllProducts}/>
+            {/*<Pagination totalProductsPage={totalProductsPage} currentPage={currentPage} pageChange={getAllProducts}/>*/}
         </div>
     );
 };

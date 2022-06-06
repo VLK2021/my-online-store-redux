@@ -10,8 +10,11 @@ import './PaginationStyle.css';
 
 const Pagination = ({totalProductsPage, currentPage, pageChange}) => {
 
+    console.log('currentPage', currentPage);
+
     const dispatch = useDispatch();
     const {word} = useParams();
+    console.log(word);
 
 
     const [startPage, setStartPage] = useState(1);
@@ -44,9 +47,10 @@ const Pagination = ({totalProductsPage, currentPage, pageChange}) => {
         if (pageChange === getAllProducts) {
             dispatch(pageChange(page));
         }
-        // if (pageChange === getSearchProducts) {
-        //     dispatch(getSearchProducts(word, page));
-        // }
+        if (pageChange === getSearchProducts) {
+            console.log(page);
+            dispatch(pageChange({word, page}));
+        }
     };
 
 

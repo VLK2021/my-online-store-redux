@@ -12,13 +12,12 @@ const Search = () => {
     const {register, reset, handleSubmit} = useForm();
     const navigate = useNavigate();
 
-    const {currentPage} = useSelector(store => store.search);
-
+    const page = useSelector(store => store.search.currentPage);
 
     const submit = (data) => {
         let word = data.search
         navigate(`/search/${word}`)
-        dispatch(getSearchProducts({word, currentPage}))
+        dispatch(getSearchProducts({word, page}))
         reset()
     }
 
