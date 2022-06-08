@@ -7,7 +7,6 @@ import Search from "../components/Search/Search";
 import Form from "../components/Form/Form";
 
 
-
 const Layout = () => {
     return (
         <div className={'layout'}>

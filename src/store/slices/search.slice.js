@@ -5,9 +5,10 @@ import {productsService} from "../../services/products.service";
 
 export const getSearchProducts = createAsyncThunk(
     'searchSlice/getSearchProducts',
-    async ({word, page}, {rejectWithValue}) => {
+    async ({url, word, page}, {rejectWithValue}) => {
         try {
-            const searchA = await productsService.getAllSearch(word, page)
+            // const searchA = await productsService.getAllSearch(url, word, page)
+            const searchA = await productsService.getAllSearch(url, word, page)
             return searchA
         } catch (e) {
             return rejectWithValue(e.message)
@@ -19,8 +20,8 @@ const initialState = {
     searchArr: [],
     status: null,
     error: null,
-    currentPage: 1,
-    totalProductsPage: 12,
+    // currentPage: 1,
+    // totalProductsPage: 12,
 }
 
 const searchSlice = createSlice({
@@ -37,10 +38,10 @@ const searchSlice = createSlice({
         },
 
         [getSearchProducts.fulfilled]: (state, action) => {
-            state.ststus = 'fulfilled'
+            state.status = 'fulfilled'
             state.searchArr = action.payload
-            state.currentPage = action.payload.page
-            state.totalProductsPage = action.payload.totalProductsPage
+            // state.currentPage = action.payload.page
+            // state.totalProductsPage = action.payload.totalProductsPage
         },
 
         [getSearchProducts.rejected]: (state, action) => {

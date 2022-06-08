@@ -8,24 +8,27 @@ import {getSearchProducts} from "../../store";
 import './PaginationStyle.css';
 
 
-const Pagination = ({totalProductsPage, currentPage, pageChange}) => {
+const Pagination = () => {
 
-    console.log('currentPage', currentPage);
+  // const w  = fetch('http://online-store.bootcamp.place/api/products')
+  //       .then(response => response.json())
+  //       .then(value => {
+  //       return value.length;
+  //   })
+  //
+  //   console.log(w);
+
 
     const dispatch = useDispatch();
     const {word} = useParams();
-    console.log(word);
-
 
     const [startPage, setStartPage] = useState(1);
     const [endPage, setEndPage] = useState(6);
 
-
     const pages = [];
 
-
     const onAddNextPages = () => {
-        if (endPage + 6 <= totalProductsPage) {
+        if (endPage + 6 <= 12) {
             setStartPage(startPage + 6);
             setEndPage(endPage + 6);
         }
@@ -38,28 +41,27 @@ const Pagination = ({totalProductsPage, currentPage, pageChange}) => {
         }
     };
 
-
     for (let i = startPage; i <= endPage; i++) {
         pages.push(i);
     }
 
     const onPageChange = (page) => {
-        if (pageChange === getAllProducts) {
-            dispatch(pageChange(page));
+        if (getAllProducts) {
+            dispatch(getAllProducts(page));
         }
-        if (pageChange === getSearchProducts) {
-            console.log(page);
-            dispatch(pageChange({word, page}));
+
+        if (getSearchProducts) {
+            dispatch(getSearchProducts({word, page}));
         }
     };
-
 
     return (
         <div className={'pagination'}>
             <button onClick={onRemovePages} className="pagination-btn">Prev</button>
             {
                 pages.map(item => <div key={item}
-                                       className={`pagination-pages ${currentPage === item && 'active-page'}`}
+                                       // className={`pagination-pages ${item === currentPage && 'active-page'}`}
+                                       className={`pagination-pages`}
                                        onClick={() => {
                                            onPageChange(item);
                                        }}>{item}</div>)

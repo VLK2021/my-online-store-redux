@@ -8,28 +8,25 @@ import './ProductsListPageStyle.css';
 
 
 const ProductsListPage = () => {
+    const {error, productsArr} = useSelector(store => store.products);
 
-    const {error, productsArr, currentPage, totalProductsPage} = useSelector(store => store.products);
     const dispatch = useDispatch();
-
     const page = 1;
-
 
     useEffect(() => {
         dispatch((getAllProducts(page)))
     }, []);
-
 
     return (
         <div className={'products'}>
             {error && <h1>{error}</h1>}
 
             <div className={'products-all'}>{
-                productsArr && productsArr.map(prod => <ProductCard key={prod.id} product={prod}/>)
+                productsArr.length > 0 ? productsArr.map(prod => <ProductCard key={prod.id} product={prod}/>) : ''
             }</div>
 
-            <Pagination totalProductsPage={totalProductsPage} currentPage={currentPage} pageChange={getAllProducts}/>
-
+            {/*<Pagination totalProductsPage={totalProductsPage} currentPage={currentPage} pageChange={getAllProducts}/>*/}
+            <Pagination/>
         </div>
     );
 };
