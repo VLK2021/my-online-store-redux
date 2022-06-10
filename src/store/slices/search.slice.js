@@ -5,10 +5,10 @@ import {productsService} from "../../services/products.service";
 
 export const getSearchProducts = createAsyncThunk(
     'searchSlice/getSearchProducts',
-    async ({url, word, page}, {rejectWithValue}) => {
+    async ({word, page}, {rejectWithValue}) => {
         try {
             // const searchA = await productsService.getAllSearch(url, word, page)
-            const searchA = await productsService.getAllSearch(url, word, page)
+            const searchA = await productsService.getAllSearch(word, page)
             return searchA
         } catch (e) {
             return rejectWithValue(e.message)
