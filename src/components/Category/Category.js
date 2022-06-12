@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
-import {useNavigate, useSearchParams} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 import './CategoryStyle.css';
 import {getSearchProducts} from "../../store";
@@ -10,17 +10,13 @@ const Category = ({cat}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const [query, setQuery] = useSearchParams();
-
+    const {pathname} = useLocation();
 
     const page = 1;
 
     const changeCategories = (e) => {
         e.preventDefault();
-        const word = `category=${e.target.name}`.toLowerCase();
-
-        setQuery({www:e.target.name})
-
+        const word = pathname.replace('/', '').concat(`category=${e.target.name}&`.toLowerCase());
         navigate(`${word}`)
         dispatch(getSearchProducts({word, page}))
     }
@@ -39,5 +35,4 @@ const Category = ({cat}) => {
         </div>
     );
 };
-
 export default Category;
