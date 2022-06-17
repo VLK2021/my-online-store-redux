@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {productsService} from "../../services/products.service";
 
+import {productsService} from "../../services/products.service";
 
 
 export const getAllBrands = createAsyncThunk(
@@ -9,7 +9,7 @@ export const getAllBrands = createAsyncThunk(
         try {
             const brandsA = await productsService.getBrands();
             return brandsA;
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e.message);
         }
     }
@@ -43,6 +43,5 @@ const brandsSlice = createSlice({
         }
     },
 });
-
 const brandsReducer = brandsSlice.reducer;
 export default brandsReducer;

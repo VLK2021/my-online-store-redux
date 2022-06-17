@@ -16,7 +16,7 @@ const Brand = ({bran}) => {
     const changeBrand = (e) => {
         e.preventDefault();
         const word = pathname.replace('/', '').concat(`brand=${e.target.name}&`.toLowerCase());
-        navigate(`/${word}`)
+        navigate(`${word}`)
         dispatch(getSearchProducts({word, page}));
     };
 

@@ -7,20 +7,16 @@ import './SearchComponentPageStyle.css';
 
 
 const SearchComponentPage = () => {
-
     const {searchArr} = useSelector(store => store.searchs);
 
     return (
         <div className={'searchComponent'}>
+            <div className={'searchComponent-prod'}>{
+                searchArr && searchArr.map(prod => <ProductCard key={prod.id} product={prod}/>)
+            }</div>
 
-                {
-                    searchArr && searchArr.map(prod => <ProductCard key={prod.id} product={prod}/>)
-                }
-
-            {/*<Pagination totalProductsPage={totalProductsPage} currentPage={currentPage} pageChange={getAllProducts}/>*/}
             <Pagination/>
         </div>
     );
 };
-
 export default SearchComponentPage;
