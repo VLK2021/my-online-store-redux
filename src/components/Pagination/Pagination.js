@@ -8,19 +8,14 @@ import {getSearchProducts} from "../../store";
 import './PaginationStyle.css';
 
 
-const Pagination = () => {
-
-  // const w  = fetch('http://online-store.bootcamp.place/api/products')
-  //       .then(response => response.json())
-  //       .then(value => {
-  //       return value.length;
-  //   })
-  //
-  //   console.log(w);
-
+const Pagination = ({pageNumber}) => {
+    console.log(pageNumber);
 
     const dispatch = useDispatch();
     const {word} = useParams();
+
+    const totalProductsPages = 12;
+
 
     const [startPage, setStartPage] = useState(1);
     const [endPage, setEndPage] = useState(6);
@@ -28,7 +23,7 @@ const Pagination = () => {
     const pages = [];
 
     const onAddNextPages = () => {
-        if (endPage + 6 <= 12) {
+        if (endPage + 6 <= totalProductsPages) {
             setStartPage(startPage + 6);
             setEndPage(endPage + 6);
         }
@@ -47,6 +42,7 @@ const Pagination = () => {
 
     const onPageChange = (page) => {
         if (getAllProducts) {
+            console.log(page);
             dispatch(getAllProducts(page));
         }
 
@@ -60,8 +56,8 @@ const Pagination = () => {
             <button onClick={onRemovePages} className="pagination-btn">Prev</button>
             {
                 pages.map(item => <div key={item}
-                                       // className={`pagination-pages ${item === currentPage && 'active-page'}`}
-                                       className={`pagination-pages`}
+                                       className={`pagination-pages ${item === pageNumber && 'active-page'}`}
+                                       // className={`pagination-pages`}
                                        onClick={() => {
                                            onPageChange(item);
                                        }}>{item}</div>)

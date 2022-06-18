@@ -1,4 +1,4 @@
-const baseURL = 'http://online-store.bootcamp.place/api';
+const baseURL = 'https://online-store.bootcamp.place/api';
 
 export default baseURL;
 
