@@ -8,7 +8,7 @@ import './ProductsListPageStyle.css';
 
 
 const ProductsListPage = () => {
-    const {error, productsArr, pageNumber} = useSelector(store => store.products);
+    const {error, productsArr, pageNumber, totalProductsPages} = useSelector(store => store.products);
 
 
     const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const ProductsListPage = () => {
                 productsArr.length > 0 ? productsArr.map(prod => <ProductCard key={prod.id} product={prod}/>) : ''
             }</div>
 
-            <Pagination pageNumber={page}/>
+            <Pagination pageNumber={page} totalProductsPages={totalProductsPages}/>
         </div>
     );
 };

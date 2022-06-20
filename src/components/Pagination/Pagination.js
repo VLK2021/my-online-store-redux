@@ -8,14 +8,10 @@ import {getSearchProducts} from "../../store";
 import './PaginationStyle.css';
 
 
-const Pagination = ({pageNumber}) => {
-    console.log(pageNumber);
+const Pagination = ({totalProductsPages, pageNumber}) => {
 
     const dispatch = useDispatch();
     const {word} = useParams();
-
-    const totalProductsPages = 12;
-
 
     const [startPage, setStartPage] = useState(1);
     const [endPage, setEndPage] = useState(6);
@@ -42,7 +38,6 @@ const Pagination = ({pageNumber}) => {
 
     const onPageChange = (page) => {
         if (getAllProducts) {
-            console.log(page);
             dispatch(getAllProducts(page));
         }
 
@@ -55,9 +50,8 @@ const Pagination = ({pageNumber}) => {
         <div className={'pagination'}>
             <button onClick={onRemovePages} className="pagination-btn">Prev</button>
             {
-                pages.map(item => <div key={item}
-                                       className={`pagination-pages ${item === pageNumber && 'active-page'}`}
-                                       // className={`pagination-pages`}
+                pages.map((item, index) => <div key={item}
+                                       className={`pagination-pages ${pageNumber === item && 'active-page'}`}
                                        onClick={() => {
                                            onPageChange(item);
                                        }}>{item}</div>)

@@ -1,16 +1,17 @@
 import React, {useState} from 'react';
-import Slider from '@material-ui/core/Slider';
-import {useDispatch} from "react-redux";
+import Slider from "@material-ui/core/Slider";
 import {useLocation, useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
-import './SliderPriceStyle.css';
 import {getSearchProducts} from "../../store";
+import './SliderRatingStyle.css';
 
-const SliderPrice = () => {
+
+const SliderRating = () => {
     const dispatch = useDispatch();
-    const [value, setValue] = useState([0, 85000]);
     const {pathname} = useLocation();
     const navigate = useNavigate();
+    const [value, setValue] = useState([0, 5]);
 
     const page = 1;
     const handleChange = (e, value) => {
@@ -19,28 +20,29 @@ const SliderPrice = () => {
 
     const valuetext = (e) => `${value}`;
 
-    const minChange = (e) => {
-        const minMaxArr = e.target.ariaValueText.replaceAll(',', ' ').split(' ')
-        const currentMinMax = `price_gte=${minMaxArr[0]}&price_lte=${minMaxArr[1]}`
-        const word = pathname.replace('/', '').concat(`${currentMinMax}&`.toLowerCase())
+    const changeRating = (e) => {
+        const minMaxArrRating = e.target.ariaValueText.replaceAll(',', ' ').split(' ')
+        const currentMinMaxRating = `rating_gte=${minMaxArrRating[0]}&rating_lte=${minMaxArrRating[1]}`
+        const word = pathname.replace('/', '').concat(`${currentMinMaxRating}&`.toLowerCase())
         navigate(`${word}`)
         dispatch(getSearchProducts({word, page}))
     }
 
     return (
-        <div className={'sliderPrice'}>
+        <div className={'sliderRating'}>
             <Slider
-                className={'slid'}
+                className={'slidR'}
                 min={0}
-                max={85000}
+                max={5}
+                step={0.01}
                 value={value}
                 onChange={handleChange}
                 valueLabelDisplay="auto"
                 // aria-labelledby="range-slider"
                 getAriaValueText={valuetext}
-                onClick={minChange}
+                onClick={changeRating}
             />
         </div>
     );
 };
-export default SliderPrice;
+export default SliderRating;

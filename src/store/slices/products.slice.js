@@ -7,7 +7,6 @@ export const getAllProducts = createAsyncThunk(
     'productsSlice/getAllProducts',
 
     async (page, {rejectWithValue}) => {
-        console.log(page);
         try {
             const productsAr = await productsService.getAllProducts(page);
             return productsAr
@@ -22,6 +21,7 @@ const initialState = {
     status: null,
     error: null,
     pageNumber: 1,
+    totalProductsPages: 12,
 };
 
 
@@ -42,7 +42,6 @@ const productsSlice = createSlice({
             state.status = 'fulfilled'
             state.productsArr = action.payload
             state.pageNumber = action.payload.page
-            console.log(action.payload.page);
         },
 
         [getAllProducts.rejected]: (state, action) => {
