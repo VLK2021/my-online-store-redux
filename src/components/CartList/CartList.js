@@ -13,7 +13,7 @@ const CartList = ({cartArr, onClick, totalPrice}) => {
             <div className={'cartList-products'}>
 
                 {
-                    cartArr.length > 0 ? cartArr.map(prod => <ProductCardInCart key={prod.id} prod={prod}/>) : 'кошик порожній!'
+                    cartArr.length > 0 ? cartArr.map(prod => <ProductCardInCart key={prod.id} prod={prod} totalPrice={totalPrice}/>) : 'кошик порожній!'
                 }
 
             </div>
@@ -37,5 +37,4 @@ const CartList = ({cartArr, onClick, totalPrice}) => {
         </div>
     );
 };
-
 export default CartList;
