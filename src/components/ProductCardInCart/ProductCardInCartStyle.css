@@ -6,7 +6,7 @@
 }
 
 .productCardInCart-img {
-    width: 6rem;
+    width: 10%;
     height: 3.5rem;
 }
 
@@ -16,25 +16,43 @@
 }
 
 .productCardInCart-textTitle {
-
+    width: 65%;
 }
 
 .productCardInCart-textTitle > p {
+    padding: 0 1rem 0 1rem;
+    text-align: center;
     color: var(--var-color-text-h3-h6);
 }
 
 .productCardInCart-AddDell {
+    width: 10%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
+}
+
+
+.BiMinusCircle {
+    cursor: pointer;
+}
+
+.BiPlusCircle {
+    cursor: pointer;
 }
 
 .productCardInCart-AddDell > p {
     margin: 0 0.5rem 0 0.5rem;
 }
 
-.productCardInCart-price {
+.productCardInCart-AddDell-count {
+    font-weight: bold;
+}
 
+.productCardInCart-price {
+    width: 10%;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .productCardInCart-price > p {

@@ -17,7 +17,6 @@ const cartSlice = createSlice({
                 finded.count += 1;
             } else {
                 state.cartArr.push({...action.payload, count: 1})
-
             }
         },
 

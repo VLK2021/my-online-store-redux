@@ -3,7 +3,7 @@
     top: 6rem;
     left: 5rem;
     width: 90%;
-    min-height: 25rem;
+    height: 25rem;
     padding: 0.5rem;
     border-radius: 0.2rem;
     z-index: 2;
@@ -20,6 +20,13 @@
 .cartList-products {
     width: 100%;
     padding: 0.1rem;
+    overflow-y: scroll;
+}
+
+.cartList-title-text {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--var-bg-btn-blockStar-h1);
 }
 
 .cartList-mainOrder {
@@ -33,5 +40,31 @@
 
 .cartList-order-totalPrice {
     width: 100%;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartList-totalPrice {
+    width: 15%;
+    padding: 0.2rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+    border: 1px solid black;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+}
+
+.cartList-btn {
+    width: 15rem;
+    background: var(--var-bg-btn-blockStar-h1);
+    color: var(--var-color-textInBlock-star-textActive);
+    padding: 0.5rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
 }

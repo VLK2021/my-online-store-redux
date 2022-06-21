@@ -8,18 +8,11 @@ import { useSelector } from 'react-redux';
 const CartList = ({cartArr, onClick }) => {
   const { totalPrice } = useSelector(store => store.cart);
 
-  // const newCartArr = [];
-    // for (const element of cartArr) {
-    //     if (!newCartArr.includes(element)) {
-    //         newCartArr.push(element);
-    //     }
-    // }
-
     return (
         <div className={'cartList'}>
             <div className={'cartList-products'}>
                 {
-                    cartArr.length > 0 ? cartArr.map(prod => <ProductCardInCart key={prod.id} prod={prod}/>) : 'кошик пустий'
+                    cartArr.length > 0 ? cartArr.map(prod => <ProductCardInCart key={prod.id} prod={prod}/>) : <p className={'cartList-title-text'}>кошик порожній!!!</p>
                 }
             </div>
             <hr/>
@@ -28,17 +21,16 @@ const CartList = ({cartArr, onClick }) => {
                 cartArr.length > 0 ?
                     <div className={'cartList-order'}>
                         <div className={'cartList-order-totalPrice'}>
-                            <p>сумма замовлення:</p>
-                            <div>{totalPrice}</div>
+                            <p className={'cartList-title-text'}>сумма замовлення:</p>
+                            <div className={'cartList-totalPrice'}>{totalPrice} ua</div>
                         </div>
 
-                        <button onClick={onClick}>
+                        <button className={'cartList-btn'} onClick={onClick}>
                             оформити замовлення
                         </button>
                     </div>
                     : null
             }</div>
-
         </div>
     );
 };

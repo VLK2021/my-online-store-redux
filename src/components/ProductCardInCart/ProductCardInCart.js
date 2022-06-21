@@ -15,13 +15,12 @@ const ProductCardInCart = ({prod}) => {
     const minusProduct = () => {
         setNumberOfProducts(numberOfProducts - 1);
         if (numberOfProducts <= 1) {
-          dispatch(delProductFromCart(prod));
+            dispatch(delProductFromCart(prod));
         }
     }
 
     const plusProduct = () => {
         setNumberOfProducts(numberOfProducts + 1);
-        // dispatch(setTotalPrice(totalPr + price * numberOfProducts))
         dispatch(setProductInCart(prod));
     }
 
@@ -36,17 +35,16 @@ const ProductCardInCart = ({prod}) => {
             </div>
 
             <div className={'productCardInCart-AddDell'}>
-                <BiMinusCircle onClick={minusProduct}/>
+                <BiMinusCircle className={'BiMinusCircle'} size={20} onClick={minusProduct}/>
 
-                <p>{count}</p>
+                <p className={'productCardInCart-AddDell-count'}>{count}</p>
 
-                <BiPlusCircle onClick={plusProduct}/>
+                <BiPlusCircle className={'BiPlusCircle'} size={20} onClick={plusProduct}/>
             </div>
 
             <div className={'productCardInCart-price'}>
                 <p>{price * count}</p>
             </div>
-
         </div>
     );
 };

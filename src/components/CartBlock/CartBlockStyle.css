@@ -2,12 +2,20 @@
     width: 10rem;
     background: var(--var-bg-btn-blockStar-h1);
     color: var(--var-bg-color);
-    padding: 1rem;
+    padding: 0.7rem;
     border-radius: 0.3rem;
+    text-align: center;
+}
+
+.cartBlock-first{
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+}
+
+.cartBlock-second{
+margin-top: 0.2rem;
 }
 
 .cartBlock-bitCartAlt{
