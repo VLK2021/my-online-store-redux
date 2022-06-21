@@ -2,11 +2,12 @@ import React from 'react';
 
 import './CartCircleStele.css';
 
-const CartCircle = ({length = 0}) => {
+const CartCircle = ({arr}) => {
+    const count = arr.reduce((p, c) => p + c.count, 0);
 
-    return length > 0? (
+    return count > 0? (
         <div className={'cartCircle'}>
-            {length}
+            {count}
         </div>
     ): null
 };
