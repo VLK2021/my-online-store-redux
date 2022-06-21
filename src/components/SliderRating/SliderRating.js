@@ -42,6 +42,11 @@ const SliderRating = () => {
                 getAriaValueText={valuetext}
                 onClick={changeRating}
             />
+
+            <div className={'sliderRating-numbers'}>
+                <div>{value[0]}</div>
+                <div>{value[1]}</div>
+            </div>
         </div>
     );
 };

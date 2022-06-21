@@ -5,3 +5,11 @@ width: 90%;
 .slid{
 
 }
+
+.sliderPrice-numbers{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+}

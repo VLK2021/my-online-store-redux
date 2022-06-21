@@ -40,6 +40,10 @@ const SliderPrice = () => {
                 getAriaValueText={valuetext}
                 onClick={minChange}
             />
+            <div className={'sliderPrice-numbers'}>
+                <div>{`${value[0]} ua`}</div>
+                <div>{`${value[1]} ua`}</div>
+            </div>
         </div>
     );
 };

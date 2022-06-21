@@ -1,3 +1,10 @@
 .sliderRating {
     width: 90%;
 }
+
+.sliderRating-numbers{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
