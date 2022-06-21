@@ -5,19 +5,18 @@ import {BiMinusCircle, BiPlusCircle} from "react-icons/bi";
 import './ProductCardInCartStyle.css';
 import {delProductFromCart, setProductInCart} from "../../store";
 
-const ProductCardInCart = ({prod, totalPrice}) => {
+const ProductCardInCart = ({prod}) => {
     const dispatch = useDispatch();
 
-    const {images, title, price, id} = prod;
+    const {images, title, price, count} = prod;
 
     const [numberOfProducts, setNumberOfProducts] = useState(1);
 
     const minusProduct = () => {
         setNumberOfProducts(numberOfProducts - 1);
         if (numberOfProducts <= 1) {
-            dispatch(delProductFromCart(id));
+          dispatch(delProductFromCart(prod));
         }
-        // dispatch(setTotalPrice(totalPr - price * numberOfProducts))
     }
 
     const plusProduct = () => {
@@ -39,13 +38,13 @@ const ProductCardInCart = ({prod, totalPrice}) => {
             <div className={'productCardInCart-AddDell'}>
                 <BiMinusCircle onClick={minusProduct}/>
 
-                <p>{numberOfProducts}</p>
+                <p>{count}</p>
 
                 <BiPlusCircle onClick={plusProduct}/>
             </div>
 
             <div className={'productCardInCart-price'}>
-                <p>{price * numberOfProducts}</p>
+                <p>{price * count}</p>
             </div>
 
         </div>

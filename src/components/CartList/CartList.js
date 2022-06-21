@@ -2,10 +2,13 @@ import React from 'react';
 
 import './CartListStyle.css';
 import ProductCardInCart from "../ProductCardInCart/ProductCardInCart";
+import { useSelector } from 'react-redux';
 
 
-const CartList = ({cartArr, onClick, totalPrice}) => {
-    // const newCartArr = [];
+const CartList = ({cartArr, onClick }) => {
+  const { totalPrice } = useSelector(store => store.cart);
+
+  // const newCartArr = [];
     // for (const element of cartArr) {
     //     if (!newCartArr.includes(element)) {
     //         newCartArr.push(element);
@@ -16,7 +19,7 @@ const CartList = ({cartArr, onClick, totalPrice}) => {
         <div className={'cartList'}>
             <div className={'cartList-products'}>
                 {
-                    cartArr.length > 0 ? cartArr.map(prod => <ProductCardInCart key={prod.id} prod={prod} totalPrice={totalPrice}/>) : 'кошик пустий'
+                    cartArr.length > 0 ? cartArr.map(prod => <ProductCardInCart key={prod.id} prod={prod}/>) : 'кошик пустий'
                 }
             </div>
             <hr/>
