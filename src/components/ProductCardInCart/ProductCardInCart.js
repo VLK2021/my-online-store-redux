@@ -3,9 +3,9 @@ import {useDispatch} from "react-redux";
 import {BiMinusCircle, BiPlusCircle} from "react-icons/bi";
 
 import './ProductCardInCartStyle.css';
-import {delProductFromCart} from "../../store";
+import {delProductFromCart, setProductInCart} from "../../store";
 
-const ProductCardInCart = ({prod}) => {
+const ProductCardInCart = ({prod, totalPrice}) => {
     const dispatch = useDispatch();
 
     const {images, title, price, id} = prod;
@@ -17,10 +17,13 @@ const ProductCardInCart = ({prod}) => {
         if (numberOfProducts <= 1) {
             dispatch(delProductFromCart(id));
         }
+        // dispatch(setTotalPrice(totalPr - price * numberOfProducts))
     }
 
     const plusProduct = () => {
         setNumberOfProducts(numberOfProducts + 1);
+        // dispatch(setTotalPrice(totalPr + price * numberOfProducts))
+        dispatch(setProductInCart(prod));
     }
 
     return (

@@ -10,9 +10,8 @@ import './CartBlockStyle.css';
 const CartBlock = () => {
     const [cartListVisible, setCartListVisible] = useState(false);
     const {cartArr} = useSelector(store => store.cart);
-
     const totalPrice = cartArr.reduce((acc, product) => acc += product.price, 0);
-
+    // const totalPr = totalPrice + cartArr.reduce((acc, product) => acc += product.price, 0)
 
     return (
         <div className={'cartBlock'}>
@@ -25,16 +24,13 @@ const CartBlock = () => {
             />
 
             <p className={'cartBlock-text'}>cart</p>
-
             {/*{totalPrice > 0 ? (*/}
             {/*    <div className={'cartBlock-totalPrice'}>{totalPrice} ua</div>*/}
             {/*) : null}*/}
 
             {cartListVisible && <CartList cartArr={cartArr} onClick={() => null} totalPrice={totalPrice}/>}
-
+            {/*{cartListVisible && <CartList cartArr={cartArr} onClick={() => null} totalPr={totalPr}/>}*/}
         </div>
-
     );
 };
-
 export default CartBlock;

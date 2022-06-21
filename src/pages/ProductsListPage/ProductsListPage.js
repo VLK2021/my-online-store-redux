@@ -10,7 +10,6 @@ import './ProductsListPageStyle.css';
 const ProductsListPage = () => {
     const {error, productsArr, pageNumber, totalProductsPages} = useSelector(store => store.products);
 
-
     const dispatch = useDispatch();
     const page = pageNumber;
 
