@@ -25,11 +25,13 @@ const CartBlock = () => {
 
             <div className={'cartBlock-second'}>
                 {totalPrice > 0 ? (
-                <div className={'cartBlock-totalPrice'}>{totalPrice} ua</div>
-            ) : null}
+                    <div className={'cartBlock-totalPrice'}>{totalPrice} ua</div>
+                ) : null}
             </div>
 
-            {cartListVisible && <CartList cartArr={cartArr} onClick={() => null}/>}
+            {cartListVisible &&
+            <CartList cartArr={cartArr} cartListVisible={cartListVisible} setCartListVisible={setCartListVisible}
+                      onClick={() => null}/>}
         </div>
     );
 };

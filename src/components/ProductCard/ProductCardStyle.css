@@ -60,6 +60,10 @@
     padding: 0 1rem;
 }
 
+.productCard-price-price {
+    font-weight: bold;
+}
+
 .title{
     height: 5rem;
     font-size: 0.9rem;
