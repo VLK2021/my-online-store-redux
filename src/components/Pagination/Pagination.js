@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {useParams} from "react-router-dom";
 import {AiOutlineLeft, AiOutlineRight} from "react-icons/ai";
+import {AiOutlineDoubleLeft, AiOutlineDoubleRight} from "react-icons/ai";
 
 import {getAllProducts} from "../../store";
 import {getSearchProducts} from "../../store";
@@ -64,15 +65,26 @@ const Pagination = ({totalProductsPages}) => {
     return (
         <div className={'pagination'}>
             <button className={'pagination-btn'} onClick={() => {
-                onArrowPageChange(page - 1)
+                onArrowPageChange(page - 1);
+                // if(page - 1 <= totalProductsPages/2) {
+                //     onRemovePages();
+                // }
             }}>
                 <AiOutlineLeft
-                    className={'AiOutlineLeft'}
+                    className={'AiOutline'}
                     size={35}
                     fill={'#7E72F2'}
                 />
             </button>
-            {/*<button onClick={onRemovePages} className="pagination-btn">Prev</button>*/}
+
+            {/*<button onClick={onRemovePages} className="pagination-btn doubleArrow">*/}
+            {/*    <AiOutlineDoubleLeft*/}
+            {/*    className={'AiOutlineDouble'}*/}
+            {/*    size={25}*/}
+            {/*    fill={'#000'}*/}
+            {/*    />*/}
+            {/*</button>*/}
+
             {
                 pages.map(item =>
                     <div key={item}
@@ -82,13 +94,23 @@ const Pagination = ({totalProductsPages}) => {
                          }}>{item}
                     </div>)
             }
-            {/*<button onClick={onAddNextPages} className="pagination-btn">Next</button>*/}
+
+            {/*<button onClick={onAddNextPages} className="pagination-btn doubleArrow">*/}
+            {/*   <AiOutlineDoubleRight*/}
+            {/*       className={'AiOutlineDouble'}*/}
+            {/*       size={25}*/}
+            {/*       fill={'#000'}*/}
+            {/*   />*/}
+            {/*</button>*/}
 
             <button className={'pagination-btn'} onClick={() => {
-                onArrowPageChange(page + 1)
+                onArrowPageChange(page + 1);
+                // if(page + 1 > totalProductsPages/2){
+                //     onAddNextPages();
+                // }
             }}>
                 <AiOutlineRight
-                    className={'AiOutlineLeft'}
+                    className={'AiOutline'}
                     size={35}
                     fill={'#7E72F2'}
                 />
