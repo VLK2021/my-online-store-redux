@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch} from "react-redux";
 import {useParams} from "react-router-dom";
 import {AiOutlineLeft, AiOutlineRight} from "react-icons/ai";
@@ -6,15 +6,28 @@ import {AiOutlineDoubleLeft, AiOutlineDoubleRight} from "react-icons/ai";
 
 import {getAllProducts} from "../../store";
 import {getSearchProducts} from "../../store";
+import {AxiosService} from "../../services/axios.service";
+import {urls} from "../../constans/urls";
 import './PaginationStyle.css';
 
 
-const Pagination = ({totalProductsPages}) => {
+const Pagination = () => {
+
+    useEffect(()=>{
+        if(getAllProducts) {
+            AxiosService.get(urls.products(page)).then(value => setEndPage(Math.ceil(value.headers['x-total-count']/9)));
+        }
+        if(getSearchProducts) {
+            AxiosService.get(urls.search(word, page)).then(value => setEndPage(Math.ceil(value.headers['x-total-count']/9)));
+        }
+    }, []);
+
     const dispatch = useDispatch();
     const {word} = useParams();
 
+
     const [startPage, setStartPage] = useState(1);
-    const [endPage, setEndPage] = useState(totalProductsPages);
+    const [endPage, setEndPage] = useState(0);
 
     const [page, setPage] = useState(1);
 
@@ -40,11 +53,13 @@ const Pagination = ({totalProductsPages}) => {
 
     const onPageChange = (page) => {
         if (getAllProducts) {
+            AxiosService.get(urls.products(page)).then(value => setEndPage(Math.ceil(value.headers['x-total-count']/9)));
             dispatch(getAllProducts(page));
             setPage(page);
         }
 
         if (getSearchProducts) {
+            AxiosService.get(urls.search(word, page)).then(value => setEndPage(Math.ceil(value.headers['x-total-count']/9)))
             dispatch(getSearchProducts({word, page}));
             setPage(page);
         }
