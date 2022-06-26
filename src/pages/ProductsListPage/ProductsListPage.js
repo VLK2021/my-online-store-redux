@@ -1,20 +1,21 @@
 import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect} from 'react';
 
-import {getAllProducts} from "../../store";
+import {getAllProducts, getTotalProducts} from "../../store";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Pagination from "../../components/Pagination/Pagination";
 import './ProductsListPageStyle.css';
 
 
 const ProductsListPage = () => {
-    const {error, productsArr, pageNumber, totalProductsPages} = useSelector(store => store.products);
-
+    const {error, productsArr, totalProductsInArr} = useSelector(store => store.products);
     const dispatch = useDispatch();
-    const page = pageNumber;
+
+    const page = 1;
 
     useEffect(() => {
-        dispatch((getAllProducts(page)))
+        dispatch(getTotalProducts(page));
+        dispatch(getAllProducts(page));
     }, []);
 
     return (
@@ -25,9 +26,8 @@ const ProductsListPage = () => {
                 productsArr.length > 0 ? productsArr.map(prod => <ProductCard key={prod.id} product={prod}/>) : ''
             }</div>
 
-            <Pagination pageNumber={page} totalProductsPages={totalProductsPages}/>
+            <Pagination totalProductsInArr={totalProductsInArr}/>
         </div>
     );
 };
-
 export default ProductsListPage;

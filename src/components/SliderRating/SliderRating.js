@@ -3,7 +3,7 @@ import Slider from "@material-ui/core/Slider";
 import {useLocation, useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 
-import {getSearchProducts} from "../../store";
+import {getSearchProducts, getTotalSearch} from "../../store";
 import './SliderRatingStyle.css';
 
 
@@ -25,7 +25,8 @@ const SliderRating = () => {
         const currentMinMaxRating = `rating_gte=${minMaxArrRating[0]}&rating_lte=${minMaxArrRating[1]}`
         const word = pathname.replace('/', '').concat(`${currentMinMaxRating}&`.toLowerCase())
         navigate(`${word}`)
-        dispatch(getSearchProducts({word, page}))
+        dispatch(getTotalSearch({word, page}));
+        dispatch(getSearchProducts({word, page}));
     }
 
     return (

@@ -7,7 +7,7 @@ import './SearchComponentPageStyle.css';
 
 
 const SearchComponentPage = () => {
-    const {searchArr} = useSelector(store => store.searchs);
+    const {searchArr, totalProductsInArr} = useSelector(store => store.searchs);
 
     return (
         <div className={'searchComponent'}>
@@ -15,7 +15,7 @@ const SearchComponentPage = () => {
                 searchArr && searchArr.map(prod => <ProductCard key={prod.id} product={prod}/>)
             }</div>
 
-            <Pagination/>
+            <Pagination totalProductsInArr={totalProductsInArr}/>
         </div>
     );
 };

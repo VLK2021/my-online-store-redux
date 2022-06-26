@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
 import {useLocation, useNavigate} from "react-router-dom";
 
-import {getSearchProducts} from "../../store";
+import {getSearchProducts, getTotalSearch} from "../../store";
 import './SearchStyle.css';
 
 
@@ -18,7 +18,8 @@ const Search = () => {
     const submit = (data) => {
         const word = pathname.replace('/', '').concat(`q=${data.search}&`.toLowerCase()) ;
         navigate(`${word}`)
-        dispatch(getSearchProducts({word, page}))
+        dispatch(getTotalSearch({word, page}));
+        dispatch(getSearchProducts({word, page}));
         reset()
     }
 

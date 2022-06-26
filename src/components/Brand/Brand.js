@@ -1,9 +1,9 @@
 import React from 'react';
-import {useLocation, useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
+import {useLocation, useNavigate} from "react-router-dom";
 
 import './BrandStyle.css';
-import {getSearchProducts} from "../../store";
+import {getSearchProducts, getTotalSearch} from "../../store";
 
 
 const Brand = ({bran}) => {
@@ -17,20 +17,21 @@ const Brand = ({bran}) => {
         e.preventDefault();
         const word = pathname.replace('/', '').concat(`brand=${e.target.name}&`.toLowerCase());
         navigate(`${word}`)
+        dispatch(getTotalSearch({word, page}));
         dispatch(getSearchProducts({word, page}));
     };
 
     return (
         <div className={'brand'}>
-                <form className={'brandForm'} name={'brand'}>
-                    <input
-                        className="checkbox"
-                        type="checkbox"
-                        name={bran.replace(' ', "_")}
-                        onInput={changeBrand}
-                    />
-                    <label>{bran}</label>
-                </form>
+            <form className={'brandForm'} name={'brand'}>
+                <input
+                    className="checkbox"
+                    type="checkbox"
+                    name={bran.replace(' ', "_")}
+                    onInput={changeBrand}
+                />
+                <label>{bran}</label>
+            </form>
         </div>
     );
 };

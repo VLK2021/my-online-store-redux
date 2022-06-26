@@ -2,25 +2,16 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch} from "react-redux";
 import {useParams} from "react-router-dom";
 import {AiOutlineLeft, AiOutlineRight} from "react-icons/ai";
-import {AiOutlineDoubleLeft, AiOutlineDoubleRight} from "react-icons/ai";
+// import {AiOutlineDoubleLeft, AiOutlineDoubleRight} from "react-icons/ai";
 
 import {getAllProducts} from "../../store";
 import {getSearchProducts} from "../../store";
-import {AxiosService} from "../../services/axios.service";
-import {urls} from "../../constans/urls";
 import './PaginationStyle.css';
 
 
-const Pagination = () => {
-
-    useEffect(()=>{
-        if(getAllProducts) {
-            AxiosService.get(urls.products(page)).then(value => setEndPage(Math.ceil(value.headers['x-total-count']/9)));
-        }
-        if(getSearchProducts) {
-            AxiosService.get(urls.search(word, page)).then(value => setEndPage(Math.ceil(value.headers['x-total-count']/9)));
-        }
-    }, []);
+const Pagination = ({totalProductsInArr}) => {
+    const endPagesFinal = Math.ceil(totalProductsInArr/9);
+    console.log(totalProductsInArr);
 
     const dispatch = useDispatch();
     const {word} = useParams();
@@ -28,10 +19,15 @@ const Pagination = () => {
 
     const [startPage, setStartPage] = useState(1);
     const [endPage, setEndPage] = useState(0);
-
     const [page, setPage] = useState(1);
 
     const pages = [];
+
+   useEffect(()=> {
+       setEndPage(endPagesFinal);
+   }, [endPagesFinal]);
+
+
 
     // const onAddNextPages = () => {
     //     if (endPage + 6 <= totalProductsPages) {
@@ -53,20 +49,6 @@ const Pagination = () => {
 
     const onPageChange = (page) => {
         if (getAllProducts) {
-            AxiosService.get(urls.products(page)).then(value => setEndPage(Math.ceil(value.headers['x-total-count']/9)));
-            dispatch(getAllProducts(page));
-            setPage(page);
-        }
-
-        if (getSearchProducts) {
-            AxiosService.get(urls.search(word, page)).then(value => setEndPage(Math.ceil(value.headers['x-total-count']/9)))
-            dispatch(getSearchProducts({word, page}));
-            setPage(page);
-        }
-    };
-
-    const onArrowPageChange = (page) => {
-        if (getAllProducts) {
             dispatch(getAllProducts(page));
             setPage(page);
         }
@@ -80,7 +62,7 @@ const Pagination = () => {
     return (
         <div className={'pagination'}>
             <button className={'pagination-btn'} onClick={() => {
-                onArrowPageChange(page - 1);
+                onPageChange(page - 1);
                 // if(page - 1 <= totalProductsPages/2) {
                 //     onRemovePages();
                 // }
@@ -119,7 +101,7 @@ const Pagination = () => {
             {/*</button>*/}
 
             <button className={'pagination-btn'} onClick={() => {
-                onArrowPageChange(page + 1);
+                onPageChange(page + 1);
                 // if(page + 1 > totalProductsPages/2){
                 //     onAddNextPages();
                 // }

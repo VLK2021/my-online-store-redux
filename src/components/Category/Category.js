@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 import {useLocation, useNavigate} from "react-router-dom";
 
 import './CategoryStyle.css';
-import {getSearchProducts} from "../../store";
+import {getSearchProducts, getTotalSearch} from "../../store";
 
 
 const Category = ({cat}) => {
@@ -18,7 +18,8 @@ const Category = ({cat}) => {
         e.preventDefault();
         const word = pathname.replace('/', '').concat(`category=${e.target.name}&`.toLowerCase());
         navigate(`${word}`)
-        dispatch(getSearchProducts({word, page}))
+        dispatch(getTotalSearch({word, page}));
+        dispatch(getSearchProducts({word, page}));
     }
 
     return (

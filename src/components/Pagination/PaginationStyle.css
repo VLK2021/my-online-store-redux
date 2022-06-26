@@ -11,8 +11,8 @@
     align-items: center;
     background: var(--var-bg-color);
     font-weight: bold;
-    height: 4rem;
-    width: 4rem;
+    height: 3.5rem;
+    width: 3.5rem;
     border: none;
     border-radius: 2.5rem;
     margin: 0.5rem;
@@ -22,6 +22,25 @@
     cursor: pointer;
     color: var(--var-color-textInBlock-star-textActive);
     background: var(--var-bg-btn-blockStar-h1);
+}
+
+.pagination-Button:hover {
+    cursor: pointer;
+    color: var(--var-color-textInBlock-star-textActive);
+    background: var(--var-bg-btn-blockStar-h1);
+}
+
+.AiOutline:hover {
+    fill: white;
+}
+
+.AiOutlineDouble:hover {
+    fill: white;
+}
+
+.doubleArrow {
+    width: 3rem;
+    height: 3rem;
 }
 
 .pagination-pages {
@@ -40,9 +59,10 @@
             inset 0 0 15px rgba(0, 0, 0, .2);
 }
 
-.pagination-pages.active-page {
+.active-page {
     background: var(--var-bg-btn-blockStar-h1);
     color: var(--var-color-textInBlock-star-textActive);
+    cursor: pointer;
 }
 
 .pagination-pages:hover {

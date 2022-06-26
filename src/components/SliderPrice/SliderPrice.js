@@ -4,7 +4,7 @@ import {useDispatch} from "react-redux";
 import {useLocation, useNavigate} from "react-router-dom";
 
 import './SliderPriceStyle.css';
-import {getSearchProducts} from "../../store";
+import {getSearchProducts, getTotalSearch} from "../../store";
 
 const SliderPrice = () => {
     const dispatch = useDispatch();
@@ -24,7 +24,8 @@ const SliderPrice = () => {
         const currentMinMax = `price_gte=${minMaxArr[0]}&price_lte=${minMaxArr[1]}`
         const word = pathname.replace('/', '').concat(`${currentMinMax}&`.toLowerCase())
         navigate(`${word}`)
-        dispatch(getSearchProducts({word, page}))
+        dispatch(getTotalSearch({word, page}));
+        dispatch(getSearchProducts({word, page}));
     }
 
     return (
