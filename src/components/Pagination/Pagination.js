@@ -11,7 +11,6 @@ import './PaginationStyle.css';
 
 const Pagination = ({totalProductsInArr}) => {
     const endPagesFinal = Math.ceil(totalProductsInArr/9);
-    console.log(totalProductsInArr);
 
     const dispatch = useDispatch();
     const {word} = useParams();

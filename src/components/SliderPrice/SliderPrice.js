@@ -8,21 +8,30 @@ import {getSearchProducts, getTotalSearch} from "../../store";
 
 const SliderPrice = () => {
     const dispatch = useDispatch();
-    const [value, setValue] = useState([0, 85000]);
-    const {pathname} = useLocation();
     const navigate = useNavigate();
+    const {pathname} = useLocation();
+    console.log(pathname);
+    const [value, setValue] = useState([0, 85000]);
+
+    const [urlPrice, setUrlPrice] = useState(pathname.replace('/', '').concat(`price_gte=${value[0]}&price_lte=${value[1]}&`));
 
     const page = 1;
     const handleChange = (e, value) => {
+        console.log(value);
         setValue(value);
     }
 
+
     const valuetext = (e) => `${value}`;
 
+
     const minChange = (e) => {
-        const minMaxArr = e.target.ariaValueText.replaceAll(',', ' ').split(' ')
-        const currentMinMax = `price_gte=${minMaxArr[0]}&price_lte=${minMaxArr[1]}`
-        const word = pathname.replace('/', '').concat(`${currentMinMax}&`.toLowerCase())
+        setUrlPrice(`price_gte=${value[0]}&price_lte=${value[1]}&`)
+        // setUrlPrice(pathname.replace('/', '').concat(`price_gte=${value[0]}&price_lte=${value[1]}&`))
+        // setUrlPrice(pathname.replace('/', ''));
+
+        const word = `${urlPrice}`.toLowerCase();
+
         navigate(`${word}`)
         dispatch(getTotalSearch({word, page}));
         dispatch(getSearchProducts({word, page}));
@@ -34,12 +43,14 @@ const SliderPrice = () => {
                 className={'slid'}
                 min={0}
                 max={85000}
+
+                onClick={minChange}
+
                 value={value}
                 onChange={handleChange}
                 valueLabelDisplay="auto"
-                // aria-labelledby="range-slider"
+                aria-labelledby="range-slider"
                 getAriaValueText={valuetext}
-                onClick={minChange}
             />
             <div className={'sliderPrice-numbers'}>
                 <div>{`${value[0]} ua`}</div>

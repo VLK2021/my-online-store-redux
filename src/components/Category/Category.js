@@ -15,12 +15,13 @@ const Category = ({cat}) => {
     const page = 1;
 
     const changeCategories = (e) => {
-        e.preventDefault();
-        const word = pathname.replace('/', '').concat(`category=${e.target.name}&`.toLowerCase());
-        navigate(`${word}`)
-        dispatch(getTotalSearch({word, page}));
-        dispatch(getSearchProducts({word, page}));
-    }
+        if (e.target.checked === true) {
+            const word = pathname.replace('/', '').concat(`category=${e.target.name}&`.toLowerCase());
+            navigate(`${word}`)
+            dispatch(getTotalSearch({word, page}));
+            dispatch(getSearchProducts({word, page}));
+        }
+    };
 
     return (
         <div className={'category'}>

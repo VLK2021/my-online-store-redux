@@ -20,7 +20,6 @@ export const getTotalSearch = createAsyncThunk(
     async ({word, page}, {rejectWithValue}) => {
         try {
             const totalS = await productsService.getTotalPagesSearch(word, page);
-            console.log(totalS);
             return totalS;
         } catch (e) {
             return rejectWithValue(e.message)
