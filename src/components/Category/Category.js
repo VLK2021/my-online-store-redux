@@ -9,7 +9,6 @@ import {getSearchProducts, getTotalSearch} from "../../store";
 const Category = ({cat}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
     const {pathname} = useLocation();
 
     const page = 1;
@@ -17,9 +16,14 @@ const Category = ({cat}) => {
     const changeCategories = (e) => {
         if (e.target.checked === true) {
             const word = pathname.replace('/', '').concat(`category=${e.target.name}&`.toLowerCase());
-            navigate(`${word}`)
             dispatch(getTotalSearch({word, page}));
             dispatch(getSearchProducts({word, page}));
+            navigate(`${word}`)
+        } else {
+            const word = pathname.replace(`category=${e.target.name}&`.toLowerCase(), '').replace('/', '')
+            dispatch(getTotalSearch({word, page}));
+            dispatch(getSearchProducts({word, page}));
+            navigate(`${word}`)
         }
     };
 

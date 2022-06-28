@@ -9,28 +9,39 @@ import {getSearchProducts, getTotalSearch} from "../../store";
 const SliderPrice = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {pathname} = useLocation();
-    console.log(pathname);
+    const location = useLocation();
     const [value, setValue] = useState([0, 85000]);
 
-    const [urlPrice, setUrlPrice] = useState(pathname.replace('/', '').concat(`price_gte=${value[0]}&price_lte=${value[1]}&`));
+    const urlDef = location.pathname.replace('/', '').concat(`price_gte=${value[0]}&price_lte=${value[1]}&`);
+    const [urlPrice, setUrlPrice] = useState(urlDef);
 
     const page = 1;
     const handleChange = (e, value) => {
-        console.log(value);
         setValue(value);
     }
-
 
     const valuetext = (e) => `${value}`;
 
 
+    // const query = new URLSearchParams(useLocation().search);
+    // console.log(query);
+
+
     const minChange = (e) => {
-        setUrlPrice(`price_gte=${value[0]}&price_lte=${value[1]}&`)
-        // setUrlPrice(pathname.replace('/', '').concat(`price_gte=${value[0]}&price_lte=${value[1]}&`))
-        // setUrlPrice(pathname.replace('/', ''));
+        // console.log(e.target);
+
+        const urlPriceNew = `price_gte=${value[0]}&price_lte=${value[1]}&`;
+        console.log('urlPriceNew',urlPriceNew);
+
+        const urlOld = location.pathname.replace('/', '');
+        console.log('urlOld',urlOld);
+
+        setUrlPrice(urlOld.concat(urlPriceNew));
 
         const word = `${urlPrice}`.toLowerCase();
+        console.log('word',word);
+
+        <hr/>
 
         navigate(`${word}`)
         dispatch(getTotalSearch({word, page}));
@@ -40,7 +51,7 @@ const SliderPrice = () => {
     return (
         <div className={'sliderPrice'}>
             <Slider
-                className={'slid'}
+                className={'slid sliderPrice'}
                 min={0}
                 max={85000}
 
