@@ -13,13 +13,14 @@ const Form = () => {
 
     const submit = (e) => {
         const box = document.getElementsByClassName('checkbox');
-        const sliderRating =document.getElementsByClassName('slidR');
-        if (sliderRating.innerText !== "0\n5"){
-            console.log(sliderRating[0].children[2].value);
-            console.log(sliderRating);
-            sliderRating[0].children[2].value = "0,5"
-            console.log(sliderRating[0].children[2].value);
-        }
+        const sliderPrice =document.getElementsByClassName('sliderPrice');
+        // console.log(sliderPrice[0].childNodes);
+        // if (sliderRating.aria-valuemin > "0"){
+        //     console.log(sliderRating[0].children[2].value);
+        //     console.log(sliderRating);
+        //     sliderRating[0].children[2].value = "0,5"
+        //     console.log(sliderRating[0].children[2].value);
+        // }
         for (let i = 0; i < box.length; i++) {
             if (box[i].checked) {
                 box[i].checked = !box[i].checked;

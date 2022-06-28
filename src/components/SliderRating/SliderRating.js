@@ -39,7 +39,7 @@ const SliderRating = () => {
                 value={value}
                 onChange={handleChange}
                 valueLabelDisplay="auto"
-                // aria-labelledby="range-slider"
+                aria-labelledby="range-slider"
                 getAriaValueText={valuetext}
                 onClick={changeRating}
             />
