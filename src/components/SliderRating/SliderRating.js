@@ -1,32 +1,31 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Slider from "@material-ui/core/Slider";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 
-import {getSearchProducts, getTotalSearch} from "../../store";
+// import {getSearchProducts, getTotalSearch} from "../../store";
 import './SliderRatingStyle.css';
 
 
-const SliderRating = () => {
+const SliderRating = ({valueRating, setValueRating}) => {
     const dispatch = useDispatch();
-    const {pathname} = useLocation();
     const navigate = useNavigate();
-    const [value, setValue] = useState([0, 5]);
+
 
     const page = 1;
-    const handleChange = (e, value) => {
-        setValue(value);
+    const handleChange = (e, valueRating) => {
+        setValueRating(valueRating);
     }
 
-    const valuetext = (e) => `${value}`;
+    const valuetext = (e) => `${valueRating}`;
 
     const changeRating = (e) => {
-        const minMaxArrRating = e.target.ariaValueText.replaceAll(',', ' ').split(' ')
-        const currentMinMaxRating = `rating_gte=${minMaxArrRating[0]}&rating_lte=${minMaxArrRating[1]}`
-        const word = pathname.replace('/', '').concat(`${currentMinMaxRating}&`.toLowerCase())
-        navigate(`${word}`)
-        dispatch(getTotalSearch({word, page}));
-        dispatch(getSearchProducts({word, page}));
+        // const minMaxArrRating = e.target.ariaValueText.replaceAll(',', ' ').split(' ')
+        // const currentMinMaxRating = `rating_gte=${minMaxArrRating[0]}&rating_lte=${minMaxArrRating[1]}`
+        // const word = pathname.replace('/', '').concat(`${currentMinMaxRating}&`.toLowerCase())
+        // navigate(`${word}`)
+        // dispatch(getTotalSearch({word, page}));
+        // dispatch(getSearchProducts({word, page}));
     }
 
     return (
@@ -36,7 +35,7 @@ const SliderRating = () => {
                 min={0}
                 max={5}
                 step={0.01}
-                value={value}
+                value={valueRating}
                 onChange={handleChange}
                 valueLabelDisplay="auto"
                 aria-labelledby="range-slider"
@@ -45,8 +44,8 @@ const SliderRating = () => {
             />
 
             <div className={'sliderRating-numbers'}>
-                <div>{value[0]}</div>
-                <div>{value[1]}</div>
+                <div>{valueRating[0]}</div>
+                <div>{valueRating[1]}</div>
             </div>
         </div>
     );

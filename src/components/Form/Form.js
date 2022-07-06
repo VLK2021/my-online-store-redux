@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
 
 import './FormStyle.css';
@@ -11,21 +11,19 @@ import SliderRating from "../SliderRating/SliderRating";
 const Form = () => {
     const navigate = useNavigate();
 
+    const [value, setValue] = useState([0, 85000]);
+    const [valueRating, setValueRating] = useState([0, 5]);
+
     const submit = (e) => {
         const box = document.getElementsByClassName('checkbox');
-        const sliderPrice =document.getElementsByClassName('sliderPrice');
-        // console.log(sliderPrice[0].childNodes);
-        // if (sliderRating.aria-valuemin > "0"){
-        //     console.log(sliderRating[0].children[2].value);
-        //     console.log(sliderRating);
-        //     sliderRating[0].children[2].value = "0,5"
-        //     console.log(sliderRating[0].children[2].value);
-        // }
         for (let i = 0; i < box.length; i++) {
             if (box[i].checked) {
                 box[i].checked = !box[i].checked;
             }
         }
+
+        setValue([0, 85000]);
+        setValueRating([0, 5]);
         navigate(`/`);
     };
 
@@ -35,7 +33,7 @@ const Form = () => {
 
             <div className={'formWrapper-sliderPrice marginBottom'}>
                 <h3>Search Price</h3>
-                <SliderPrice/>
+                <SliderPrice value={value} setValue={setValue}/>
             </div>
 
             <div className={'formWrapper-categories marginBottom'}>
@@ -50,7 +48,7 @@ const Form = () => {
 
             <div className={'formWrapper-sliderRating marginBottom'}>
                 <h3>Search Rating</h3>
-                <SliderRating/>
+                <SliderRating valueRating={valueRating} setValueRating={setValueRating}/>
             </div>
 
             <button className={'form-btn'} onClick={e => submit(e)}>clear all filters</button>

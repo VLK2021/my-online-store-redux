@@ -36,7 +36,7 @@ const Brand = ({bran}) => {
                     name={bran.replace(' ', "_")}
                     onInput={changeBrand}
                 />
-                <label>{bran}</label>
+                <label className={'brand-label'}>{bran}</label>
             </form>
         </div>
     );
