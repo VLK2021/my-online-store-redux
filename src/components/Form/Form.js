@@ -33,7 +33,10 @@ const Form = () => {
 
             <div className={'formWrapper-sliderPrice marginBottom'}>
                 <h3>Search Price</h3>
-                <SliderPrice value={value} setValue={setValue}/>
+                <SliderPrice
+                    value={value}
+                    setValue={setValue}
+                />
             </div>
 
             <div className={'formWrapper-categories marginBottom'}>

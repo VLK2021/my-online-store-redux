@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Slider from '@material-ui/core/Slider';
 import {useDispatch} from "react-redux";
 import {useLocation, useNavigate} from "react-router-dom";
 
 import './SliderPriceStyle.css';
-// import {getSearchProducts, getTotalSearch} from "../../store";
+import {getSearchProducts, getTotalSearch} from "../../store";
 
 
 const SliderPrice = ({value, setValue}) => {
@@ -12,15 +12,26 @@ const SliderPrice = ({value, setValue}) => {
     const navigate = useNavigate();
     const location = useLocation();
 
-
-
     const page = 1;
     const handleChange = (_, value) => {
         setValue(value)
     }
+//https://online-store.bootcamp.place/api/products
+
+    const urlPriseSave = location.pathname.replace('/', '')
 
     const getLoad = (e) => {
+        const priseUrl = `price_gte=${value[0]}&price_lte=${value[1]}&`;
+        const params = {
+            price_gte: value[0],
+            price_lte: value[1],
+        }
 
+        const word = priseUrl;
+
+        navigate(`${word}`)
+        dispatch(getTotalSearch({word, page}));
+        dispatch(getSearchProducts({word, page}));
     }
 
     const valuetext = (e) => `${value}`;

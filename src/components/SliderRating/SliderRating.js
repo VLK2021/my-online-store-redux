@@ -1,15 +1,16 @@
 import React from 'react';
 import Slider from "@material-ui/core/Slider";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 
-// import {getSearchProducts, getTotalSearch} from "../../store";
+import {getSearchProducts, getTotalSearch} from "../../store";
 import './SliderRatingStyle.css';
 
 
 const SliderRating = ({valueRating, setValueRating}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
 
 
     const page = 1;
@@ -20,12 +21,12 @@ const SliderRating = ({valueRating, setValueRating}) => {
     const valuetext = (e) => `${valueRating}`;
 
     const changeRating = (e) => {
-        // const minMaxArrRating = e.target.ariaValueText.replaceAll(',', ' ').split(' ')
-        // const currentMinMaxRating = `rating_gte=${minMaxArrRating[0]}&rating_lte=${minMaxArrRating[1]}`
-        // const word = pathname.replace('/', '').concat(`${currentMinMaxRating}&`.toLowerCase())
-        // navigate(`${word}`)
-        // dispatch(getTotalSearch({word, page}));
-        // dispatch(getSearchProducts({word, page}));
+        const currentMinMaxRating = `rating_gte=${valueRating[0]}&rating_lte=${valueRating[1]}`
+        // const word = location.pathname.replace('/', '').concat(`${currentMinMaxRating}&`.toLowerCase())
+        const word = currentMinMaxRating;
+        navigate(`${word}`)
+        dispatch(getTotalSearch({word, page}));
+        dispatch(getSearchProducts({word, page}));
     }
 
     return (
