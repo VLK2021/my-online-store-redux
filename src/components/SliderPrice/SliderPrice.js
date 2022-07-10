@@ -4,10 +4,11 @@ import {useDispatch} from "react-redux";
 import {useLocation, useNavigate} from "react-router-dom";
 
 import './SliderPriceStyle.css';
-import {getSearchProducts, getTotalSearch} from "../../store";
+import {getValuePrice} from "../../store/slices/price.slice";
+// import {getSearchProducts, getTotalSearch} from "../../store";
 
 
-const SliderPrice = ({value, setValue}) => {
+const SliderPrice = ({value, setValue, searchParams, setSearchParams}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
@@ -18,24 +19,42 @@ const SliderPrice = ({value, setValue}) => {
     }
 //https://online-store.bootcamp.place/api/products
 
-    const urlPriseSave = location.pathname.replace('/', '')
-
     const getLoad = (e) => {
-        const priseUrl = `price_gte=${value[0]}&price_lte=${value[1]}&`;
-        const params = {
-            price_gte: value[0],
-            price_lte: value[1],
-        }
+        const url = location.pathname.replace('/', '');
+        const price_gte = value[0];
+        const price_lte = value[1];
 
-        const word = priseUrl;
+        dispatch(getValuePrice({url, page, price_gte, price_lte}));
 
-        navigate(`${word}`)
-        dispatch(getTotalSearch({word, page}));
-        dispatch(getSearchProducts({word, page}));
+
+
+
+        // const params = {
+        //     ...searchParams,
+        //     price_gte: value[0],
+        //     price_lte: value[1],
+        // }
+        // setSearchParams(params);
+        // if(!location.pathname.includes('price')) {
+        //     const word = `price_gte=${value[0]}&price_lte=${value[1]}&`;
+        //     dispatch(getTotalSearch({word, page}));
+        //     dispatch(getSearchProducts({word, page}));
+        //     navigate(`${word}`);
+        // } else {
+        //     const params = {
+        //             ...searchParams,
+        //             price_gte: value[0],
+        //             price_lte: value[1],
+        //         }
+        //         setSearchParams(params);
+        //     const word = (location.pathname + location.search).replaceAll('?', '');
+        //     dispatch(getTotalSearch({word, page}));
+        //     dispatch(getSearchProducts({word, page}));
+        //     // navigate(`${word}`);
+        // }
     }
 
     const valuetext = (e) => `${value}`;
-
 
     return (
         <div className={'sliderPrice'}>

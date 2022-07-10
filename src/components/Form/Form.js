@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
 import './FormStyle.css';
 import Categories from "../Categories/Categories";
@@ -10,9 +10,12 @@ import SliderRating from "../SliderRating/SliderRating";
 
 const Form = () => {
     const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    const [value, setValue] = useState([0, 85000]);
+    // const [value, setValue] = useState([0, 85000]);
+    const [value, setValue] = useState([+searchParams.get('price_gte') || 0, +searchParams.get('price_gte') || 85000]);
     const [valueRating, setValueRating] = useState([0, 5]);
+
 
     const submit = (e) => {
         const box = document.getElementsByClassName('checkbox');
@@ -36,6 +39,8 @@ const Form = () => {
                 <SliderPrice
                     value={value}
                     setValue={setValue}
+                    searchParams={searchParams}
+                    setSearchParams={setSearchParams}
                 />
             </div>
 

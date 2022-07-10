@@ -5,6 +5,7 @@ import searchReducer from "./slices/search.slice";
 import cartReducer from "./slices/cart.slice";
 import categoriesReducer from "./slices/categories.slice";
 import brandsReducer from "./slices/brands.slice";
+import priceReducer from "./slices/price.slice";
 
 
 
@@ -15,6 +16,7 @@ const store = configureStore({
         cart: cartReducer,
         categories: categoriesReducer,
         brands: brandsReducer,
+        price: priceReducer,
     }
 });
 
