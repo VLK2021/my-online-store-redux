@@ -11,5 +11,6 @@ export const productsService = {
 
     getTotalPagesProducts: (page) => AxiosService.get(urls.products(page)).then(value => value.headers['x-total-count']),
     getTotalPagesSearch: (word, page) => AxiosService.get(urls.search(word, page)).then(value => value.headers['x-total-count']),
+    getTotalPagesSearchPrice: (url, page, price_gte, price_lte) => AxiosService.get(urls.searchOfPrice(url, page, price_gte, price_lte)).then(value => value.headers['x-total-count']),
 }
 

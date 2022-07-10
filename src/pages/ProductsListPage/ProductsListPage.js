@@ -21,7 +21,6 @@ const ProductsListPage = () => {
     return (
         <div className={'products'}>
             {error && <h1>{error}</h1>}
-
             <div className={'products-all'}>{
                 productsArr.length > 0 ? productsArr.map(prod => <ProductCard key={prod.id} product={prod}/>) : ''
             }</div>

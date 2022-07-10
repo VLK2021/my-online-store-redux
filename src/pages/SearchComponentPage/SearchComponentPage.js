@@ -8,7 +8,6 @@ import './SearchComponentPageStyle.css';
 
 const SearchComponentPage = () => {
     const {searchArr, totalProductsInArr} = useSelector(store => store.searchs);
-
     return (
         <div className={'searchComponent'}>
             <div className={'searchComponent-prod'}>{
