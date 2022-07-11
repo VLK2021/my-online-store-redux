@@ -15,11 +15,11 @@ function App() {
                 <Route path={''} element={<Layout/>}>
                     <Route index element={<ProductsListPage/>}/>
                     <Route path={`:word`} element={<SearchComponentPage/>}/>
-                    {/*<Route path={`/wqs`} element={<SearchPrice/>}/>*/}
                     <Route path={'*'} element={<NotFoundPage/>}/>
                 </Route>
             </Routes>
         </div>
     );
 }
+
 export default App;

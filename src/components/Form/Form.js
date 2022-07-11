@@ -14,7 +14,6 @@ const Form = () => {
     const [value, setValue] = useState([0, 85000]);
     const [valueRating, setValueRating] = useState([0, 5]);
 
-
     const submit = (e) => {
         const box = document.getElementsByClassName('checkbox');
         for (let i = 0; i < box.length; i++) {

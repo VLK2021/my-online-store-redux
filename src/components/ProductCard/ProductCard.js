@@ -8,7 +8,7 @@ import {setProductInCart} from "../../store";
 
 
 const ProductCard = ({product}) => {
-    const {id, brand, category, price, rating, title, images} = product;
+    const {category, price, rating, title, images} = product;
     const dispatch = useDispatch();
 
     const handleClick = (e) => {
@@ -41,5 +41,4 @@ const ProductCard = ({product}) => {
         </div>
     );
 };
-
 export default ProductCard;

@@ -16,7 +16,7 @@ const Search = () => {
     const page = 1;
 
     const submit = (data) => {
-        const word = pathname.replace('/', '').concat(`q=${data.search}&`.toLowerCase()) ;
+        const word = pathname.replace('/', '').concat(`q=${data.search}&`.toLowerCase());
 
         navigate(`${word}`)
         dispatch(getTotalSearch({word, page}));

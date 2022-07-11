@@ -10,7 +10,7 @@ import './PaginationStyle.css';
 
 
 const Pagination = ({totalProductsInArr}) => {
-    const endPagesFinal = Math.ceil(totalProductsInArr/9);
+    const endPagesFinal = Math.ceil(totalProductsInArr / 9);
 
     const dispatch = useDispatch();
     const {word} = useParams();
@@ -22,12 +22,10 @@ const Pagination = ({totalProductsInArr}) => {
 
     const pages = [];
 
-   useEffect(()=> {
-       setEndPage(endPagesFinal);
-   }, [endPagesFinal]);
-
-
-
+    useEffect(() => {
+        setEndPage(endPagesFinal);
+    }, [endPagesFinal]);
+    //Закоментований код дозволяє реалізувати ще одну пагінацію !!!!!
     // const onAddNextPages = () => {
     //     if (endPage + 6 <= totalProductsPages) {
     //         setStartPage(startPage + 6);

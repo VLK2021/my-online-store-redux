@@ -1,7 +1,6 @@
 import React from 'react';
 import {AiFillCloseCircle} from 'react-icons/ai';
 
-
 import './CartListStyle.css';
 import ProductCardInCart from "../ProductCardInCart/ProductCardInCart";
 import {useSelector} from 'react-redux';

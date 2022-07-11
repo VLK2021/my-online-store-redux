@@ -12,7 +12,6 @@ const SliderRating = ({valueRating, setValueRating}) => {
     const navigate = useNavigate();
     const location = useLocation();
 
-
     const page = 1;
     const handleChange = (e, valueRating) => {
         setValueRating(valueRating);
@@ -21,12 +20,29 @@ const SliderRating = ({valueRating, setValueRating}) => {
     const valuetext = (e) => `${valueRating}`;
 
     const changeRating = (e) => {
-        const currentMinMaxRating = `rating_gte=${valueRating[0]}&rating_lte=${valueRating[1]}`
-        // const word = location.pathname.replace('/', '').concat(`${currentMinMaxRating}&`.toLowerCase())
-        const word = currentMinMaxRating;
-        navigate(`${word}`)
-        dispatch(getTotalSearch({word, page}));
-        dispatch(getSearchProducts({word, page}));
+        const url = location.pathname.replace('/', '');
+
+        if (!location.pathname.includes('rating')) {
+            const word = url + `rating_gte=${valueRating[0]}&rating_lte=${valueRating[1]}&`
+
+            navigate(`${word}`)
+            dispatch(getTotalSearch({word, page}));
+            dispatch(getSearchProducts({word, page}));
+        } else {
+            const arrRating = location.pathname.split('rating_gte=');
+            const indexAmp = arrRating[1].indexOf('&');
+            const newArrRatingSlice = arrRating[1].slice(indexAmp);
+            const wordGte = 'rating_gte=' + valueRating[0] + newArrRatingSlice;
+
+            const arrRatingLte = wordGte.split('rating_lte=');
+            const indexAmpLte = arrRatingLte[1].indexOf('&');
+            const newArrRatingSliceLte = arrRatingLte[1].slice(indexAmpLte);
+            const word = arrRating[0].replace('/', '') + arrRatingLte[0] + 'rating_lte=' + valueRating[1] + newArrRatingSliceLte;
+
+            navigate(`${word}`);
+            dispatch(getTotalSearch({word, page}));
+            dispatch(getSearchProducts({word, page}));
+        }
     }
 
     return (
