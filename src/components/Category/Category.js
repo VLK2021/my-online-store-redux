@@ -15,6 +15,7 @@ const Category = ({cat}) => {
 
     const changeCategories = (e) => {
         if (e.target.checked === true) {
+            console.log(pathname);
             const word = pathname.replace('/', '').concat(`category=${e.target.name}&`.toLowerCase());
             dispatch(getTotalSearch({word, page}));
             dispatch(getSearchProducts({word, page}));

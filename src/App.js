@@ -2,7 +2,6 @@ import {Route, Routes} from "react-router-dom";
 
 import ProductsListPage from "./pages/ProductsListPage/ProductsListPage";
 import SearchComponentPage from "./pages/SearchComponentPage/SearchComponentPage";
-// import SearchPrice from "./pages/SearchPrice/SearchPrice";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Layout from "./Layout/Layout";
 import './App.css';
