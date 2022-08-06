@@ -35,6 +35,7 @@ const Form = () => {
                 <h3>Search Price</h3>
                 <SliderPrice
                     value={value}
+
                     setValue={setValue}
                 />
             </div>
