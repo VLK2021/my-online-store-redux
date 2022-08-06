@@ -29,9 +29,8 @@ const Category = ({cat}) => {
 
 
     const changeCategories = (e) => {
-        if (e.target.checked === true) {
+        if (e.target.checked === true && pathname.includes('my-online-store-redux/')) {
 
-            if (pathname.includes('my-online-store-redux/') === true) {
                 const word = pathname.concat(`category=${e.target.name}&`.toLowerCase());
 
                 console.log(word.replace('/my-online-store-redux/', ''));
@@ -39,29 +38,28 @@ const Category = ({cat}) => {
                 dispatch(getTotalSearch({word, page}));
                 dispatch(getSearchProducts({word, page}));
                 navigate(`${word}`)
-            }
-
-
         } else {
-            const word = pathname.replace(`my-online-store-redux/category=${e.target.name}&`.toLowerCase(), '').replace('/', '')
+            const word = pathname.replace(`category=${e.target.name}&`.toLowerCase(), '').replace('/', '')
             dispatch(getTotalSearch({word, page}));
             dispatch(getSearchProducts({word, page}));
             navigate(`${word}`)
         }
+
     }
 
-    return (
-        <div className={'category'}>
-            <form name={'categories'}>
-                <input
-                    className="checkbox"
-                    type="checkbox"
-                    name={cat.replace(' ', "_")}
-                    onInput={changeCategories}
-                />
-                <label className={'category-label'}>{cat}</label>
-            </form>
-        </div>
-    );
+
+return (
+    <div className={'category'}>
+        <form name={'categories'}>
+            <input
+                className="checkbox"
+                type="checkbox"
+                name={cat.replace(' ', "_")}
+                onInput={changeCategories}
+            />
+            <label className={'category-label'}>{cat}</label>
+        </form>
+    </div>
+);
 };
 export default Category;
