@@ -11,7 +11,7 @@ function App() {
     return (
         <div>
             <Routes>
-                <Route path={''} element={<Layout/>}>
+                <Route path={'my-online-store-redux/'} element={<Layout/>}>
                     <Route index element={<ProductsListPage/>}/>
                     <Route path={`:word`} element={<SearchComponentPage/>}/>
                     <Route path={'*'} element={<NotFoundPage/>}/>

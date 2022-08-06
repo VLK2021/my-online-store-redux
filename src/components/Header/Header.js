@@ -8,7 +8,7 @@ const Header = () => {
 
     return (
         <div className={'header'}>
-            <Link to={'/'} className={'header-text'}>Online store</Link>
+            <Link to={'/my-online-store-redux/'} className={'header-text'}>Online store</Link>
 
             <div className={'header-cartBtn'}>
                 <CartBlock/>

@@ -24,7 +24,7 @@ const Form = () => {
 
         setValue([0, 85000]);
         setValueRating([0, 5]);
-        navigate(`/`);
+        navigate(`/my-online-store-redux/`);
     };
 
 
