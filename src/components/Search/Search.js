@@ -7,6 +7,7 @@ import {getSearchProducts, getTotalSearch} from "../../store";
 import './SearchStyle.css';
 
 
+
 const Search = () => {
     const dispatch = useDispatch();
     const {register, reset, handleSubmit} = useForm();
@@ -15,13 +16,14 @@ const Search = () => {
 
     const page = 1;
 
+
     const submit = (data) => {
         const word = pathname.replace('/', '').concat(`q=${data.search}&`.toLowerCase());
 
-        navigate(`${word}`)
+        navigate(`${word}`);
         dispatch(getTotalSearch({word, page}));
         dispatch(getSearchProducts({word, page}));
-        reset()
+        reset();
     }
 
     return (
